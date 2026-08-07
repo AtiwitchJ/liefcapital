@@ -1,0 +1,142 @@
+[
+  {
+    "user_id": 1,
+    "first_name": "Dorree",
+    "last_name": "Stanlick",
+    "gender": "female",
+    "adore_car": {
+      "car_brand": "Hyundai",
+      "brand_from": "Korea"
+    },
+    "car_brand": [
+      "Subaru",
+      "Hyundai"
+    ],
+    "countries": "Czech Republic",
+    "colors": [
+      {
+        "hex": "#CD5C5C",
+        "label": "IndianRed",
+        "rgb": "205, 92, 92"
+      },
+      {
+        "hex": "#F08080",
+        "label": "LightCoral",
+        "rgb": "240, 128, 128"
+      }
+    ]
+  },
+  {
+    "user_id": 2,
+    "first_name": "Gert",
+    "last_name": "Fake",
+    "gender": "male",
+    "adore_car": {
+      "car_brand": "Subaru",
+      "brand_from": "Japan"
+    },
+    "car_brand": [
+      "Subaru",
+      "Dodge"
+    ],
+    "countries": "Colombia",
+    "colors": [
+      {
+        "hex": "#E9967A",
+        "label": "DarkSalmon",
+        "rgb": "233, 150, 122"
+      },
+      {
+        "hex": "#FFA07A",
+        "label": "LightSalmon",
+        "rgb": "255, 160, 122"
+      }
+    ]
+  },
+  {
+    "user_id": 3,
+    "first_name": "Rene",
+    "last_name": "Dust",
+    "gender": "female",
+    "adore_car": {
+      "car_brand": "Toyota",
+      "brand_from": "Japan"
+    },
+    "car_brand": [
+      "Volkswagen",
+      "Toyota"
+    ],
+    "countries": "Czech Republic",
+    "colors": [
+      {
+        "hex": "#FA8072",
+        "label": "Salmon",
+        "rgb": "250, 128, 114"
+      },
+      {
+        "hex": "#F08080",
+        "label": "LightCoral",
+        "rgb": "240, 128, 128"
+      }
+    ]
+  },
+  {
+    "user_id": 4,
+    "first_name": "Clo",
+    "last_name": "Cordes",
+    "gender": "male",
+    "adore_car": {
+      "car_brand": "Hyundai",
+      "brand_from": "Korea"
+    },
+    "car_brand": [
+      "Dodge",
+      "Hyundai",
+      "Toyota"
+    ],
+    "countries": "Colombia",
+    "colors": [
+      {
+        "hex": "#E9967A",
+        "label": "DarkSalmon",
+        "rgb": "233, 150, 122"
+      }
+    ]
+  },
+  {
+    "user_id": 5,
+    "first_name": "Emlynne",
+    "last_name": "Kettley",
+    "gender": "female",
+    "adore_car": {
+      "car_brand": "Subaru",
+      "brand_from": "Japan"
+    },
+    "car_brand": [
+      "Subaru"
+    ],
+    "countries": "Czech Republic",
+    "colors": [
+      {
+        "hex": "#CD5C5C",
+        "label": "IndianRed",
+        "rgb": "205, 92, 92"
+      },
+      {
+        "hex": "#FFA07A",
+        "label": "LightSalmon",
+        "rgb": "255, 160, 122"
+      },
+      {
+        "hex": "#F08080",
+        "label": "LightCoral",
+        "rgb": "240, 128, 128"
+      },
+      {
+        "hex": "#FA8072",
+        "label": "Salmon",
+        "rgb": "250, 128, 114"
+      }
+    ]
+  }
+]

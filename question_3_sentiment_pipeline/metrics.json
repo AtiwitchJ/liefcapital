@@ -1,0 +1,20 @@
+{
+  "dataset_size": 1000,
+  "train_size": 800,
+  "test_size": 200,
+  "accuracy": 1.0,
+  "labels": [
+    0,
+    1
+  ],
+  "confusion_matrix": [
+    [
+      100,
+      0
+    ],
+    [
+      0,
+      100
+    ]
+  ]
+}
