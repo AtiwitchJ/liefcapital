@@ -4,36 +4,52 @@ import json
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
+
 
 def transform(data: dict[str, Any]) -> list[dict[str, Any]]:
-    genders = {item["gender_id"]: item["label"] for item in data["gender"]}
-    cars = {item["car_id"]: item for item in data["cars"]}
-    colors = {item["label"]: item for item in data["rgbCode"]}
-    countries = {
-        int(user["userId"]): country["label"]
-        for country in data["countries"]
-        for user in country["user_ids"]
-    }
+    genders = pd.DataFrame(data["gender"]).set_index("gender_id")["label"]
+    cars = pd.DataFrame(data["cars"]).set_index("car_id")
+    colors = pd.DataFrame(data["rgbCode"]).set_index("label")
+    countries = pd.DataFrame(
+        [
+            {"user_id": int(user["userId"]), "country": country["label"]}
+            for country in data["countries"]
+            for user in country["user_ids"]
+        ]
+    ).set_index("user_id")["country"]
 
-    results = []
-    for student in data["students"]:
-        adored = cars[student["adore_car"]]
-        results.append(
-            {
-                "user_id": student["user_id"],
-                "first_name": student["first_name"],
-                "last_name": student["last_name"],
-                "gender": genders[student["gender_id"]],
-                "adore_car": {
-                    "car_brand": adored["car_brand"],
-                    "brand_from": adored["car_make"],
-                },
-                "car_brand": [cars[car_id]["car_brand"] for car_id in student["car_brand"]],
-                "countries": countries[student["user_id"]],
-                "colors": [colors[color] for color in student["color"]],
-            }
-        )
-    return results
+    students = pd.DataFrame(data["students"])
+    students["gender"] = students["gender_id"].map(genders)
+    students["adore_car"] = students["adore_car"].map(
+        lambda car_id: {
+            "car_brand": cars.at[car_id, "car_brand"],
+            "brand_from": cars.at[car_id, "car_make"],
+        }
+    )
+    students["car_brand"] = students["car_brand"].map(
+        lambda car_ids: [cars.at[car_id, "car_brand"] for car_id in car_ids]
+    )
+    students["colors"] = students["color"].map(
+        lambda labels: [colors.loc[label].to_dict() for label in labels]
+    )
+    students["countries"] = students["user_id"].map(countries)
+
+    return (
+        students[
+            [
+                "user_id",
+                "first_name",
+                "last_name",
+                "gender",
+                "adore_car",
+                "car_brand",
+                "countries",
+                "colors",
+            ]
+        ]
+        .to_dict(orient="records")
+    )
 
 
 if __name__ == "__main__":

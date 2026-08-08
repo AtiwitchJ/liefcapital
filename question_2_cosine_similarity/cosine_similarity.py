@@ -1,20 +1,24 @@
-"""Cosine similarity without external libraries."""
+"""Cosine similarity using NumPy."""
 
-from math import sqrt
 from typing import List
+
+import numpy as np
 
 
 def cosine_similarity(vec1: List[float], vec2: List[float]) -> float:
     if len(vec1) != len(vec2):
         raise ValueError("Vectors must have the same length.")
 
-    dot_product = sum(a * b for a, b in zip(vec1, vec2))
-    magnitude1 = sqrt(sum(value * value for value in vec1))
-    magnitude2 = sqrt(sum(value * value for value in vec2))
-    if magnitude1 == 0 or magnitude2 == 0:
+    a = np.array(vec1, dtype=float)
+    b = np.array(vec2, dtype=float)
+
+    norm_a = np.linalg.norm(a)
+    norm_b = np.linalg.norm(b)
+
+    if norm_a == 0 or norm_b == 0:
         raise ValueError("Cosine similarity is undefined for a zero vector.")
 
-    return dot_product / (magnitude1 * magnitude2)
+    return float(np.dot(a, b) / (norm_a * norm_b))
 
 
 if __name__ == "__main__":
